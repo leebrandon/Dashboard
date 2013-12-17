@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+	<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.3.2/jquery.min.js"></script>
+	<script type="text/javascript" charset="utf-8">
+		var hostUrl = "http://jenkins.be.sac.ngmoco.com:8080/plugin/jenkinswalldisplay/walldisplay.html";
+		var sites = [
+						"./picViewer.html",
+						"./ngcat/ngcat.html",
+						"./picViewer.html",
+						hostUrl + "?viewName=ngCore-Client/view/Current%20Dev&jenkinsUrl=http%3A%2F%2Fjenkins.be.sac.ngmoco.com%3A8080%2F",
+						"http://jenkins.be.sac.ngmoco.com:8080/plugin/global-build-stats/showChart?buildStatId=cNhU5@ycR5RQ9gdUEU3k$Iw2LJHFZxoZ",
+						hostUrl + "?viewName=ngCore-Builder&jenkinsUrl=http%3A%2F%2Fjenkins.be.sac.ngmoco.com%3A8080%2F",
+						"http://arstechnica.com",
+						hostUrl + "?viewName=ngCore-Server&jenkinsUrl=http%3A%2F%2Fjenkins.be.sac.ngmoco.com%3A8080%2F"
+			];
+		var currentSite = sites.length;
+	$(document).ready(function () {
+		$('.myIframe').css('height', $(window).height() - 30 +'px');
+		$('.myIframe').attr("src","./picViewer.html");
+		setInterval(function() {
+			(currentSite==0) ? currentSite = sites.length - 1 : currentSite = currentSite - 1;
+			$('.myIframe').attr("src",sites[currentSite]);
+		}, 45000);
+	});
+	</script>  
+	<style type="text/css" media="screen">
+		.myIframe 
+		{	
+			border: none; 
+			min-height: 200px; 
+		}
+	</style>
+</head>
+<body>
+	<iframe scrolling="no" height="100%" width="100%" class="myIframe"></iframe>
+</body>
+</html>
